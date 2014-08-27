@@ -13,7 +13,9 @@ function smarty_function_generatePdf($params, $view)
     $elementsToHide = explode(',', ThemeUtil::getVar('elementsToHide', array()));
     array_walk($elementsToHide, 'trim');
 
-    $html = ModUtil::apiFunc('PDF', 'PDF', 'removeHTMLElements', array ('html' => $html, 'elements' => $elementsToHide));
+    $html = ModUtil::apiFunc('PDF', 'PDF', 'removeHTMLElements', array('html' => $html, 'elements' => $elementsToHide));
+    $html = ModUtil::apiFunc('PDF', 'PDF', 'makeLinksAbsolute', array('html' => $html));
+
 
     /** @var PDF_TCPDF_Handler $tcpdf */
     $tcpdf = ModUtil::apiFunc('PDF', 'PDF', 'getTCPDFHandler');
