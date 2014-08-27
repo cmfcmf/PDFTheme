@@ -1,2 +1,2 @@
-{$maincontent|generatePdf}
+{generatePdf html=$maincontent}
 
